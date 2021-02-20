@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 65px);
+  align-items: center;
+  justify-content: center;
+  background-color: #c2185b;
+  color: white;
+
+  .wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .google-button {
+    background-color: transparent;
+    background-image: url('/assets/google_signin_dark.png');
+    width: 191px;
+    height: 46px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:active {
+      background-image: url('/assets/google_signin_dark_pressed.png');
+    }
+  }
+
+  .facebook-button {
+    background-color: transparent;
+    background-image: url('/assets/facebook_signin_dark.png');
+    width: 191px;
+    height: 46px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:active {
+      background-image: url('/assets/facebook_signin_dark.png');
+    }
+  }
+
+  p {
+    text-align: center;
+  }
+}

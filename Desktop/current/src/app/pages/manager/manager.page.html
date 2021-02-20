@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Blessing wall - Manager</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="routeToHome()">
+        <span>Home</span>
+      </button>
+      <button mat-menu-item (click)="routeToManager()">
+        <span>Manager</span>
+      </button>
+      <button mat-menu-item (click)="routeToFavorites()">
+        <span>Favorites</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+  <table mat-table [dataSource]="items" class="mat-elevation-z8">
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> User </th>
+      <td mat-cell *matCellDef="let element"> {{element.userDisplayName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="createTime">
+      <th mat-header-cell *matHeaderCellDef> Create Time </th>
+      <td mat-cell *matCellDef="let element"> {{ moment(element.createTime) }} </td>
+    </ng-container>
+    <ng-container matColumnDef="updateTime">
+      <th mat-header-cell *matHeaderCellDef> Update Time </th>
+      <td mat-cell *matCellDef="let element"> {{ moment(element.updateTime) }} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button>edit</button>
+        <button mat-button (click)="deleteItem(element.uid)">delete</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
